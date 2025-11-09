@@ -25,7 +25,7 @@ def send_order_reminders():
     """ % one_week_ago
     
     try:
-        # Send GraphQL request
+        # Send GraphQL request using requests (not gql)
         response = requests.post(url, json={'query': query})
         data = response.json()
         
