@@ -17,7 +17,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'graphene_django',
-    'djangocrontab',
+    'django_crontab',
     'crm',
 ]
 
@@ -60,7 +60,7 @@ DATABASES = {
 
 # Cron jobs configuration
 CRONJOBS = [
-    ('*/5 * * * *', 'crm.cron.logcrmheartbeat'),
+    ('*/5 * * * *', 'crm.cron.log_crm_heartbeat'),
     ('0 */12 * * *', 'crm.cron.updatelowstock'),
 ]
 
