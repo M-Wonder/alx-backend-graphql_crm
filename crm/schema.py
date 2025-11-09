@@ -1,10 +1,10 @@
 import graphene
 from graphene_django import DjangoObjectType
-from crm.models import Product  # Add this import
+from crm.models import Product
 
 class ProductType(DjangoObjectType):
     class Meta:
-        model = Product  # Use the actual Product model
+        model = Product
         fields = ("id", "name", "stock", "price")
 
 class UpdateLowStockProducts(graphene.Mutation):
@@ -43,5 +43,4 @@ class UpdateLowStockProducts(graphene.Mutation):
 class Mutation(graphene.ObjectType):
     update_low_stock_products = UpdateLowStockProducts.Field()
 
-# Schema definition
 schema = graphene.Schema(mutation=Mutation)
