@@ -1,10 +1,10 @@
 import graphene
 from graphene_django import DjangoObjectType
+from crm.models import Product  # Add this import
 
-# Assuming you have a Product model
 class ProductType(DjangoObjectType):
     class Meta:
-        model = None  # Replace with your actual Product model
+        model = Product  # Use the actual Product model
         fields = ("id", "name", "stock", "price")
 
 class UpdateLowStockProducts(graphene.Mutation):
@@ -17,21 +17,15 @@ class UpdateLowStockProducts(graphene.Mutation):
 
     def mutate(self, info):
         try:
-            # Import your actual Product model here
-            # from .models import Product
-            
             # Find products with low stock
-            # low_stock_products = Product.objects.filter(stock__lt=10)
+            low_stock_products = Product.objects.filter(stock__lt=10)
             
             # Update stock
-            # updated_products = []
-            # for product in low_stock_products:
-            #     product.stock += 10
-            #     product.save()
-            #     updated_products.append(product)
-            
-            # For now, return a mock response
             updated_products = []
+            for product in low_stock_products:
+                product.stock += 10
+                product.save()
+                updated_products.append(product)
             
             return UpdateLowStockProducts(
                 success=True,
