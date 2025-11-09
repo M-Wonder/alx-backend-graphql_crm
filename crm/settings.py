@@ -58,10 +58,10 @@ DATABASES = {
     }
 }
 
-# Cron jobs configuration - THIS IS CRITICAL FOR TASK 3
+# Cron jobs configuration
 CRONJOBS = [
     ('*/5 * * * *', 'crm.cron.log_crm_heartbeat'),
-    ('0 */12 * * *', 'crm.cron.update_low_stock'),
+    ('0 */12 * * *', 'crm.cron.updatelowstock'),
 ]
 
 CRONTAB_COMMAND_SUFFIX = '2>&1'
